@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class GitHub_Username {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
 
@@ -16,6 +16,8 @@ public class GitHub_Username {
 
         driver.findElement(By.id("login_field"))
                 .sendKeys("your_username");
+
+        Thread.sleep(5000);
 
         driver.quit();
     }

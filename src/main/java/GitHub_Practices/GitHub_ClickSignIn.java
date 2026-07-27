@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class GitHub_ClickSignIn {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
 
@@ -15,6 +15,8 @@ public class GitHub_ClickSignIn {
         driver.get("https://github.com/login");
 
         driver.findElement(By.name("commit")).click();
+
+        Thread.sleep(5000);
 
         driver.quit();
     }
