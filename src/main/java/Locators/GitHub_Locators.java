@@ -50,7 +50,6 @@ public class GitHub_Locators {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-        js.executeScript(
-                "arguments[0].style.border='4px solid red'; arguments[0].style.background='yellow';", element);
+        js.executeScript("arguments[0].style.border='4px solid red'; arguments[0].style.background='yellow';", element);
     }
 }
