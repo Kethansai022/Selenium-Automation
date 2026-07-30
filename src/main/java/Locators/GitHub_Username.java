@@ -1,10 +1,10 @@
-package GitHub_Practices;
+package Locators;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GitHub_Forgotpassword {
+public class GitHub_Username {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -14,9 +14,8 @@ public class GitHub_Forgotpassword {
 
         driver.get("https://github.com/login");
 
-        driver.findElement(By.linkText("Forgot password?")).click();
-
-        System.out.println(driver.getTitle());
+        driver.findElement(By.id("login_field"))
+                .sendKeys("your_username");
 
         Thread.sleep(5000);
 

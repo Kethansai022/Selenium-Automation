@@ -1,10 +1,10 @@
-package GitHub_Practices;
+package Locators;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GitHub_Username {
+public class GitHub_CreateAccount {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -14,8 +14,9 @@ public class GitHub_Username {
 
         driver.get("https://github.com/login");
 
-        driver.findElement(By.id("login_field"))
-                .sendKeys("your_username");
+        driver.findElement(By.linkText("Create an account")).click();
+
+        System.out.println(driver.getTitle());
 
         Thread.sleep(5000);
 

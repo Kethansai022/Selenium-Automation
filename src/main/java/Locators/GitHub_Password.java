@@ -1,11 +1,10 @@
-package GitHub_TextBoxHandling;
+package Locators;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GitHub_IsEnabled {
+public class GitHub_Password {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -13,13 +12,12 @@ public class GitHub_IsEnabled {
 
         driver.manage().window().maximize();
 
-        driver.get("https://github.com/login/");
+        driver.get("https://github.com/login");
 
-        WebElement username = driver.findElement(By.id("login_field"));
+        driver.findElement(By.id("password"))
+                .sendKeys("12345678");
 
-        System.out.println(username.isEnabled());
-
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         driver.quit();
     }

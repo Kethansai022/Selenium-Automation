@@ -1,9 +1,10 @@
-package GitHub_Practices;
+package Locators;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GitHub_SignIn {
+public class GitHub_ClickSignIn {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -13,7 +14,7 @@ public class GitHub_SignIn {
 
         driver.get("https://github.com/login");
 
-        System.out.println(driver.getTitle());
+        driver.findElement(By.name("commit")).click();
 
         Thread.sleep(5000);
 

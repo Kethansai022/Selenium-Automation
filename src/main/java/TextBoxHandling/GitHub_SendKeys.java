@@ -1,10 +1,11 @@
-package GitHub_Practices;
+package TextBoxHandling;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GitHub_ClickSignIn {
+public class GitHub_SendKeys {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -14,10 +15,17 @@ public class GitHub_ClickSignIn {
 
         driver.get("https://github.com/login");
 
-        driver.findElement(By.name("commit")).click();
+        WebElement username = driver.findElement(By.id("login_field"));
 
-        Thread.sleep(5000);
+        username.sendKeys("Kethan");
+
+        Thread.sleep(3000);
+
+        username.clear();
+
+        Thread.sleep(3000);
 
         driver.quit();
+
     }
 }

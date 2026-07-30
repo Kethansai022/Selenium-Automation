@@ -1,12 +1,11 @@
-package GitHub_TextBoxHandling;
+package TextBoxHandling;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class GitHub_IsDisplayed {
+public class GitHub_Username {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -16,13 +15,16 @@ public class GitHub_IsDisplayed {
 
         driver.get("https://github.com/login");
 
+        Thread.sleep(3000);
+
         WebElement username = driver.findElement(By.id("login_field"));
 
-        System.out.println(username.isDisplayed());
+        username.click();
+
+        System.out.println("Username Textbox Located Successfully");
 
         Thread.sleep(3000);
 
         driver.quit();
     }
 }
-
