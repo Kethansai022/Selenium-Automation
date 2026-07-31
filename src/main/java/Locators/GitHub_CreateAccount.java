@@ -16,6 +16,8 @@ public class GitHub_CreateAccount {
 
         driver.findElement(By.linkText("Create an account")).click();
 
+        Thread.sleep(1000);
+
         System.out.println(driver.getTitle());
 
         Thread.sleep(5000);
