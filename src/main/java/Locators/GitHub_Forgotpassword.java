@@ -16,6 +16,8 @@ public class GitHub_Forgotpassword {
 
         driver.findElement(By.linkText("Forgot password?")).click();
 
+        Thread.sleep(2000);
+
         System.out.println(driver.getTitle());
 
         Thread.sleep(5000);
