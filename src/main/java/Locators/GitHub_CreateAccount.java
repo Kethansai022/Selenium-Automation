@@ -20,7 +20,7 @@ public class GitHub_CreateAccount {
 
         System.out.println(driver.getTitle());
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         driver.quit();
     }
