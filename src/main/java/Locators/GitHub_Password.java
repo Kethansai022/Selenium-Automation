@@ -17,7 +17,7 @@ public class GitHub_Password {
         driver.findElement(By.id("password"))
                 .sendKeys("12345678");
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         driver.quit();
     }
