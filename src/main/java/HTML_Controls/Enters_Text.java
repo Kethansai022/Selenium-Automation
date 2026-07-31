@@ -18,7 +18,7 @@ public class Enters_Text {
 
         driver.findElement(By.id("APjFqb")).sendKeys("Selenium Automation");
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         driver.findElement(By.name("btnK")).click();
 
