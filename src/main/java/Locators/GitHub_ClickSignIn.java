@@ -1,5 +1,4 @@
 package Locators;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,9 +13,11 @@ public class GitHub_ClickSignIn {
 
         driver.get("https://github.com/login");
 
+        Thread.sleep(2000);
+
         driver.findElement(By.name("commit")).click();
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         driver.quit();
     }
