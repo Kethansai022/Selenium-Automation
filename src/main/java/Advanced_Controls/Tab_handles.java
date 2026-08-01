@@ -12,12 +12,12 @@ public class Tab_handles {
         driver.manage().window().maximize();
         driver.get("https://www.hyrtutorials.com/p/window-handles-practice.html#");
         Thread.sleep(1000);
-        String parentwindow = driver.getWindowHandle();
-        System.out.println("Parent Window Handle: " + parentwindow + driver.getTitle());
+        String parenttab = driver.getWindowHandle();
+        System.out.println("Parent tab Handle: " + parenttab + driver.getTitle());
         driver.findElement(By.id("newTabBtn")).click();
-        Set<String> windowHandles = driver.getWindowHandles();
-        for (String windowHandle : windowHandles) {
-            if (!windowHandle.equals(parentwindow)) {
+        Set<String> childtab = driver.getWindowHandles();
+        for (String windowHandle : childtab) {
+            if (!windowHandle.equals(parenttab)) {
                 driver.switchTo().window(windowHandle);
                 driver.manage().window().maximize();
                 driver.findElement(By.id("alertBox")).click();
@@ -29,7 +29,7 @@ public class Tab_handles {
                 driver.close();
             }
         }
-           driver.switchTo().window(parentwindow);
+           driver.switchTo().window(parenttab);
            driver.findElement(By.id("name")).sendKeys("bye");
            Thread.sleep(1000);
            driver.quit();
