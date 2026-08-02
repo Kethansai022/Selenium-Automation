@@ -1,51 +1,52 @@
-Selenium-WebDriver-Automation
+# Selenium WebDriver Automation
 
-About
+## About
 
 This repository contains my hands-on practice with **Selenium WebDriver using Java**. I created it to strengthen my automation testing skills by practicing Selenium concepts, writing clean code, and learning industry-standard automation techniques.
 
 I regularly update this repository as I learn new topics and improve my knowledge in Selenium automation.
 
-Tech Stack
+## Tech Stack
 
-Java
-Selenium WebDriver
-Maven
-TestNG
-Eclipse IDE
-Git & GitHub
+* Java
+* Selenium WebDriver
+* Maven
+* TestNG
+* Eclipse IDE
+* Git & GitHub
 
-What You'll Find
+## What You'll Find
 
-Beginner-friendly Selenium programs
-Organized examples for different Selenium concepts
-Clean and easy-to-understand code
-Practical web automation exercises
-Regular updates with new concepts
+* Beginner-friendly Selenium programs
+* Organized examples for different Selenium concepts
+* Clean and easy-to-understand code
+* Practical web automation exercises
+* Regular updates with new concepts
 
-Topics Covered
+## Topics Covered
 
-WebDriver Setup
-Browser Commands
-Navigation Commands
-Locators
-XPath
-CSS Selectors
-WebElement Methods
-Waits
-Dropdowns
-Checkboxes & Radio Buttons
-Alerts
-Window & Tab Handling
-Frames
-Mouse Actions
-Keyboard Actions
-JavaScript Executor
-Screenshots
-And more as I continue learning...
+* WebDriver Setup
+* Browser Commands
+* Navigation Commands
+* Locators
+* XPath
+* CSS Selectors
+* WebElement Methods
+* Waits
+* Dropdowns
+* Checkboxes & Radio Buttons
+* Alerts
+* Window & Tab Handling
+* Frames
+* Mouse Actions
+* Keyboard Actions
+* JavaScript Executor
+* Screenshots
+* And more as I continue learning...
 
-Repository Structure
+## Repository Structure
 
+```text
 selenium-webdriver-automation/
 │
 ├── src/
@@ -67,15 +68,15 @@ selenium-webdriver-automation/
 │           └── ...
 │
 ├── pom.xml
-├── README.me
+└── README.md
+```
 
-Purpose
+## Purpose
 
 The goal of this repository is to build a strong foundation in Selenium automation testing through consistent practice and continuous learning.
 
-About Me
+## About Me
 
 I am a QA Testing fresher with a strong interest in test automation. This repository reflects my learning journey and commitment to improving my automation skills.
-
 
 ⭐ Thank you for visiting my repository. Feedback and suggestions are always welcome!
