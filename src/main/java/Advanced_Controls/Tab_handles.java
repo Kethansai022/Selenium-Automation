@@ -15,10 +15,10 @@ public class Tab_handles {
         String parenttab = driver.getWindowHandle();
         System.out.println("Parent tab Handle: " + parenttab + driver.getTitle());
         driver.findElement(By.id("newTabBtn")).click();
-        Set<String> childtab = driver.getWindowHandles();
-        for (String windowHandle : childtab) {
-            if (!windowHandle.equals(parenttab)) {
-                driver.switchTo().window(windowHandle);
+        Set<String> allwindows = driver.getWindowHandles();
+        for (String childtab : allwindows) {
+            if (!childtab.equals(parenttab)) {
+                driver.switchTo().window(childtab);
                 driver.manage().window().maximize();
                 driver.findElement(By.id("alertBox")).click();
                 Thread.sleep(1000);

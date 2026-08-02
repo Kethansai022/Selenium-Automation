@@ -27,10 +27,10 @@ public class Window_handles {
         driver.findElement(By.id("newWindowBtn")).click();
 
         //get all windows Id's
-        Set<String> windowHandles = driver.getWindowHandles();
+        Set<String> allwindows = driver.getWindowHandles();
 
         //switch to new window and enter text
-        for (String childwindow : windowHandles) {
+        for (String childwindow : allwindows) {
             if (!childwindow.equals(parentwindow)) {
                 driver.switchTo().window(childwindow);
                 driver.manage().window().maximize();
