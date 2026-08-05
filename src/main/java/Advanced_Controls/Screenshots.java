@@ -20,8 +20,8 @@ public class Screenshots {
         driver.get("https://github.com/login");
 
         // Capture Screenshot
-        TakesScreenshot ts = (TakesScreenshot) driver;
-        File source = ts.getScreenshotAs(OutputType.FILE);
+        TakesScreenshot ss = (TakesScreenshot) driver;
+        File source = ss.getScreenshotAs(OutputType.FILE);
 
         // Save Screenshot
         File destination = new File("D:\\OneDrive\\Desktop\\Selenium-Automation\\screenshots\\github.jpg");

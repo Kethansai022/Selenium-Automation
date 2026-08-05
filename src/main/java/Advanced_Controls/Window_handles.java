@@ -29,10 +29,10 @@ public class Window_handles {
         //get all windows Id's
         Set<String> allwindows = driver.getWindowHandles();
 
-        //switch to new window and enter text
-        for (String childwindow : allwindows) {
-            if (!childwindow.equals(parentwindow)) {
-                driver.switchTo().window(childwindow);
+        //Loop through windows
+        for (String childwindow : allwindows) { // Reads every window ID one by one
+            if (!childwindow.equals(parentwindow)) { // Skip parent window
+                driver.switchTo().window(childwindow); // switch to child window
                 driver.manage().window().maximize();
                 Thread.sleep(2000);
                 driver.findElement(By.id("firstName")).sendKeys("sai");
