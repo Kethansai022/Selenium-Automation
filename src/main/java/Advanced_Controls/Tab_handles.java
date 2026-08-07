@@ -1,38 +1,67 @@
 package Advanced_Controls;
 
+import java.time.Duration;
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import java.util.Set;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Tab_handles {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
+
         WebDriver driver = new ChromeDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         driver.manage().window().maximize();
         driver.get("https://www.hyrtutorials.com/p/window-handles-practice.html#");
-        Thread.sleep(1000);
-        String parenttab = driver.getWindowHandle();
-        System.out.println("Parent tab Handle: " + parenttab + driver.getTitle());
-        driver.findElement(By.id("newTabBtn")).click();
-        Set<String> allwindows = driver.getWindowHandles();
-        for (String childtab : allwindows) {
-            if (!childtab.equals(parenttab)) {
-                driver.switchTo().window(childtab);
+
+        // Store the parent tab
+        String parentTab = driver.getWindowHandle();
+        System.out.println("Parent Tab Handle: " + parentTab);
+        System.out.println("Parent Page Title: " + driver.getTitle());
+
+        // Open a new tab
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("newTabBtn"))).click();
+
+        // Get all window handles
+        Set<String> allTabs = driver.getWindowHandles();
+
+        // Switch to the child tab
+        for (String childTab : allTabs) {
+
+            if (!childTab.equals(parentTab)) {
+
+                driver.switchTo().window(childTab);
                 driver.manage().window().maximize();
-                driver.findElement(By.id("alertBox")).click();
-                Thread.sleep(1000);
+
+                // Click Alert button
+                wait.until(ExpectedConditions.elementToBeClickable(By.id("alertBox"))).click();
+
+                // Wait for alert and accept it
+                wait.until(ExpectedConditions.alertIsPresent());
                 driver.switchTo().alert().accept();
-                Thread.sleep(1000);
-                driver.findElement(By.id("output")).getText();
-                Thread.sleep(1000);
+
+                // Read output text
+                String output = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("output"))).getText();
+
+                System.out.println("Output: " + output);
+
+                // Close child tab
                 driver.close();
             }
         }
-           driver.switchTo().window(parenttab);
-           driver.findElement(By.id("name")).sendKeys("bye");
-           Thread.sleep(1000);
-           driver.quit();
 
+        // Switch back to parent tab
+        driver.switchTo().window(parentTab);
+
+        // Enter text in parent page
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("name"))).sendKeys("bye");
+
+        // Close browser
+        driver.quit();
     }
 }

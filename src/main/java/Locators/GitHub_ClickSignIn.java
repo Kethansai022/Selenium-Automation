@@ -1,12 +1,16 @@
 package Locators;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GitHub_ClickSignIn {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         WebDriver driver = new ChromeDriver();
 
@@ -14,11 +18,11 @@ public class GitHub_ClickSignIn {
 
         driver.get("https://github.com/login");
 
-        Thread.sleep(2000);
+        // Create Explicit Wait
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        driver.findElement(By.name("commit")).click();
-
-        Thread.sleep(2000);
+        // Wait until the Sign in button is clickable and then click it
+        wait.until(ExpectedConditions.elementToBeClickable(By.name("commit"))).click();
 
         driver.quit();
     }

@@ -1,25 +1,29 @@
 package TextBoxHandling;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GitHub_IsEnabled {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         WebDriver driver = new ChromeDriver();
 
         driver.manage().window().maximize();
 
-        driver.get("https://github.com/login/");
+        driver.get("https://github.com/login");
 
-        WebElement username = driver.findElement(By.id("login_field"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        System.out.println(username.isEnabled());
+        WebElement username = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login_field")));
 
-        Thread.sleep(3000);
+        System.out.println("Username field enabled: " + username.isEnabled());
 
         driver.quit();
     }

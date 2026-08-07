@@ -1,26 +1,28 @@
 package Locators;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GitHub_Forgotpassword {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         WebDriver driver = new ChromeDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         driver.manage().window().maximize();
-
         driver.get("https://github.com/login");
 
-        driver.findElement(By.linkText("Forgot password?")).click();
+        // Wait until the "Forgot password?" link is clickable and click it
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Forgot password?"))).click();
 
-        Thread.sleep(2000);
-
+        // Print the title of the current page
         System.out.println(driver.getTitle());
-
-        Thread.sleep(5000);
 
         driver.quit();
     }

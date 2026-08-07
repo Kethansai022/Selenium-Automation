@@ -1,35 +1,56 @@
 package Advanced_Controls;
+
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Multiple_Frames_Handling {
-    public static void main(String[] args) throws InterruptedException {
+
+    public static void main(String[] args) {
+
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
+
+        // Create Explicit Wait
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         driver.get("https://www.hyrtutorials.com/p/frames-practice.html");
-        Thread.sleep(1000);
-        driver.findElement(By.id("name")).sendKeys("Text1");
 
-        driver.switchTo().frame("frm1");
-        Select dropdown = new Select(driver.findElement(By.id("selectnav1")));
+        // Enter text in the main page
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("name"))).sendKeys("Text1");
+
+        // Switch to Frame 1
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("frm1"));
+
+        // Select option from dropdown
+        WebElement dropdownElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("selectnav1")));
+        Select dropdown = new Select(dropdownElement);
         dropdown.selectByVisibleText("- Testing");
-        Thread.sleep(2000);
 
+        // Return to main page
         driver.switchTo().defaultContent();
 
-        driver.switchTo().frame("frm2");
-        driver.findElement(By.id("firstName")).sendKeys("sai");
-        Thread.sleep(1000);
+        // Switch to Frame 2
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("frm2"));
 
+        // Enter first name
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))).sendKeys("Sai");
+
+        // Return to main page
         driver.switchTo().defaultContent();
-        driver.findElement(By.id("name")).clear();
-        driver.findElement(By.id("name")).sendKeys("Text2");
-        Thread.sleep(1000);
 
+        // Clear and enter new text
+        WebElement textBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("name")));
+        textBox.clear();
+        textBox.sendKeys("Text2");
+
+        // Close browser
         driver.quit();
-
     }
 }

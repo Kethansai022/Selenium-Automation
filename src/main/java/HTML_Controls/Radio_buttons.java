@@ -1,41 +1,62 @@
 package HTML_Controls;
+
+import java.time.Duration;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class Radio_buttons {
-    public static void main(String[] args) throws InterruptedException {
+
+    public static void main(String[] args) {
+
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         driver.get("https://www.hyrtutorials.com/p/basic-controls.html");
-        Thread.sleep(1000);
-        WebElement txt = driver.findElement(By.className("bcTextBox"));
+
+        // Enter text in the textbox
+        WebElement txt = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("bcTextBox")));
         txt.sendKeys("1234");
-        Thread.sleep(1000);
-        driver.findElement(By.id("femalerb")).click();
-        Thread.sleep(1000);
-        WebElement eng = driver.findElement(By.id("englishchbx"));
-        Thread.sleep(1000);
+
+        // Select Female radio button
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("femalerb"))).click();
+
+        // Select English checkbox
+        WebElement eng = wait.until(ExpectedConditions.elementToBeClickable(By.id("englishchbx")));
         eng.click();
-        Thread.sleep(1000);
-        WebElement chi = driver.findElement(By.id("chinesechbx"));
+
+        // Select Chinese checkbox
+        WebElement chi = wait.until(ExpectedConditions.elementToBeClickable(By.id("chinesechbx")));
         chi.click();
-        Thread.sleep(1000);
-        if (eng.isSelected()){
-            eng.click(); // english deselected
+
+        // Deselect English checkbox if selected
+        if (eng.isSelected()) {
+            eng.click();
         }
-        Thread.sleep(2000);
-        WebElement span = driver.findElement(By.id("spanishchbx"));
-        span.click();
-        Thread.sleep(1000);
-        driver.findElement(By.id("email")).sendKeys("kjlhf;");
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("//button[@id='registerbtn']")).click();
-        System.out.println(driver.findElement(By.id("msg")).getText());
-        Thread.sleep(1000);
-        driver.findElement(By.linkText("Click here to navigate to the home page")).click();
-        Thread.sleep(1000);
+
+        // Select Spanish checkbox
+        WebElement spanish = wait.until(ExpectedConditions.elementToBeClickable(By.id("spanishchbx")));
+        spanish.click();
+
+        // Enter email
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email"))).sendKeys("kjlhf;");
+
+        // Click Register button
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("registerbtn"))).click();
+
+        // Print success message
+        WebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("msg")));
+        System.out.println(message.getText());
+
+        // Navigate to home page
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Click here to navigate to the home page"))).click();
+
         driver.quit();
     }
 }
-
